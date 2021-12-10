@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/minstyle.io@1.1.0/css/minstyle.io.css">
+
+        
+    </head>
+    <body style='margin: auto; width: 50%;'>
+
+        <div class="ms-menu">
+            <div class="ms-menu-logo">
+                <p>Poll Project</p>
+            </div>
+            <nav class="ms-menu-link">
+                <input type="checkbox" id="ms-menu-toggle">
+                <label for="ms-menu-toggle" class="ms-menu-icon"><i class="fa fa-bars"></i></label>
+                
+            </nav>
+        </div>
+
+        {% if is_signup %}
+            <h1>submmited successfully</h1>
+            <a href="/account/login/">login here</a>
+
+        {% else %}
+        <h1>signup</h1>
+
+        <form method="POST">
+            {% csrf_token %}
+            <input type="text" name="user" placeholder="username"> <br />
+            <input type="password" name="pass" placeholder="password"> <br />
+            <input type="text" name="fn" placeholder="firstname"><br/>
+            <input type="text" name='ln' placeholder="lastname"><br/>
+
+            <input type="submit" >
+    
+           
+        </form>
+
+        <div><a href="/">homepage</a></div>
+
+
+        {% endif %}
+
+        
+        
+             
+       
+
+
+
+
+
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/dark-mode-switcher@0.0.1/dist/dark.min.js"></script>
+
+    </body>
+</html>

@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+<title>welcome to our poll project</title>
+
+{% endblock %}
+
+{% block body %}
+
+<div class="container" style="padding: 16px;">
+    <h4> You are in Poll World!!  </h4>
+
+    <div class="row">
+      
+        {% for question in questions %}
+
+
+      <div class="col-sm-4">
+         
+
+        <div class="ms-card">
+            <div class="ms-card-pic">
+                <a href="/poll/{{ question.id }}">
+                    <img width="200" src="https://cdn.pixabay.com/photo/2016/11/30/12/09/question-mark-1872634_960_720.jpg" alt="...">
+                </a>
+            </div>
+            <div class="ms-card-title">
+                <h4>{{question.text}}</h4>
+                <span>{{question.author.username}}</span>
+            </div>
+
+           
+        </div>
+      </div>
+
+
+        {% endfor %}
+
+
+
+
+
+
+
+
+
+    </div>
+</div>
+
+
+{% endblock %}

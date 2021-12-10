@@ -1,0 +1,38 @@
+
+        
+{% if request.user.is_authenticated %}
+           
+
+            <div class="ms-menu">
+                <div class="ms-menu-logo">
+                    <span>Poll Project.....</span><span>your username: {{ request.user.username }}</span>
+                </div>
+                <nav class="ms-menu-link">
+                    <input type="checkbox" id="ms-menu-toggle">
+                    <label for="ms-menu-toggle" class="ms-menu-icon"><i class="fa fa-bars"></i></label>           
+            
+                    <ul>
+                        
+                        <a href="/account/logout/"><li>logout</li></a>
+                    </ul>
+                </nav>
+            </div>
+{% else %}
+<div class="ms-menu">
+    <div class="ms-menu-logo">
+        <p>Poll Project</p>
+    </div>
+    <nav class="ms-menu-link">
+        <input type="checkbox" id="ms-menu-toggle">
+        <label for="ms-menu-toggle" class="ms-menu-icon"><i class="fa fa-bars"></i></label>           
+
+        <ul>
+            <a href="/"><li>Home</li></a>
+            <a href="/account/login/"><li>Login</li></a>
+            <a href="/account/signup/"><li>signup</li></a>
+            <a href="/account/logout/"><li>logout</li></a>
+        </ul>
+    </nav>
+</div>
+
+{% endif %}
