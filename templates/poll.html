@@ -10,6 +10,14 @@
 
 <div class="container">
 
+    <div class="ms-breadcrumb" style="padding: 8px;">
+        <ul>
+            <li> <a href="/">Home</a> </li>
+            <li>Poll</li>
+        </ul>
+    </div>
+
+
     <div class="row">
         <div class="col-sm-3">
 
@@ -34,9 +42,17 @@
                 {% endfor %}
 
 
-
-
             {% else %}
+
+            {% if uservote %}
+                <p>You have already tried this poll. You selected {{ uservote.selected_choice.text }} last time.
+                    However you can still try again.
+                </p>
+            {% endif %}
+
+
+
+
 
             <form method="POST">
                 {% csrf_token %}
