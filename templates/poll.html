@@ -1,69 +1,61 @@
-{% extends 'base.html' %}
-
-{% block title %}
+{% extends 'base.html' %} {% block title %}
 
 <title>poll question</title>
 
-{% endblock %}
-
-{% block body %}
+{% endblock %} {% block body %}
 
 <div class="container">
+  <div class="ms-breadcrumb" style="padding: 8px">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li>Poll</li>
+    </ul>
+  </div>
 
-    <div class="row">
-        <div class="col-sm-3">
+  <div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+      <br />
+      <br />
 
+      <h4>{{ question.text }}</h4>
+
+      <br />
+
+      {% if submitted %}
+
+      <h5>You voted for {{ selected_choice.text }}</h5>
+
+      <br />
+      <h4>:Results:</h4>
+      {% for choice in choices %}
+      <p>{{choice.text}}: {{ choice.vote_count }}</p>
+      {% endfor %} {% else %} {% if uservote %}
+      <p>
+        You have already tried this poll. You selected
+        {{uservote.selected_choice.text }} last time. However you can still try
+        again.
+      </p>
+      {% endif %}
+
+      <form method="POST">
+        {% csrf_token %} {% for choice in choices %}
+
+        <div style="padding: 8px 0px">
+          <input value="{{ choice.id }}" name="choice" type="radio" />
+          <label>{{ choice.text }}</label>
+
+          <br />
         </div>
-        <div class="col-sm-6">
-          
-            <br>
-            <br>
+        {% endfor %}
 
-            <h4>{{ question.text }}</h4>
+        <input type="submit" />
+      </form>
 
-            <br>
-
-            {% if submitted %}
-
-                <h5>You voted for {{ selected_choice.text }}</h5>
-
-                <br>
-                <h4>:Results:</h4>
-                {% for choice in choices %}
-                    <p> {{choice.text}}: {{ choice.vote_count }} </p>
-                {% endfor %}
-
-
-
-
-            {% else %}
-
-            <form method="POST">
-                {% csrf_token %}
-
-                {% for choice in choices %}  
-                    
-                <div style="padding: 8px 0px;">
-                    <input value="{{ choice.id }}" name="choice" type="radio"> 
-                    <label >{{ choice.text }}</label>
-
-                    <br>
-                </div>
-                {% endfor %}
-
-                <input type="submit" >
-            </form>
-            
-            {% endif %}
-        </div>
-        <div class="col-sm-3">
-
-        </div>
-      </div>
-
-
+      {% endif %}
+    </div>
+    <div class="col-sm-3"></div>
+  </div>
 </div>
-
-
 
 {% endblock %}

@@ -2,6 +2,7 @@ from django.http import request
 from django.shortcuts import render,HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
+from django.shortcuts import redirect, render, redirect
 
  #logout here
 
@@ -12,6 +13,7 @@ def logout_view(request):
 #login here
 
 def login_view(request):
+    next_page = request.GET.get("next")
     d = { 'is_login':False }
 
     if request.method== 'POST':
@@ -24,6 +26,8 @@ def login_view(request):
             login(request,u)
 
             d = {'is_login':True}
+
+            
 
             return render(request,'login.html',d)
 
