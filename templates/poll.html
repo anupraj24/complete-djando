@@ -32,8 +32,8 @@
       <p>{{choice.text}}: {{ choice.vote_count }}</p>
       {% endfor %} {% else %} {% if uservote %}
       <p>
-        You have already tried this poll. You selected
-        {{uservote.selected_choice.text }} last time. However you can still try
+        You have already tried this poll. You selected {{
+        uservote.selected_choice.text }} last time. However you can still try
         again.
       </p>
       {% endif %}
